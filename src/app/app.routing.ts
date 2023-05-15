@@ -2,15 +2,17 @@ import { NgModule } from "@angular/core";
 import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from '../app/views/private/admin/Login/login/login.component';
+import { HomeComponent } from '../app/views/home/home.component';
+
 
 
 
 
 const appRoutes: Routes = [
-    {path:'login', component: LoginComponent},
+    {path:'', component: LoginComponent},
     //{path:'logout/:sure', component: LoginComponent},
     //{path:'registro', component: RegisterComponent}, // esta funciona con doble: //registro
-    //{path:'usuarios', component: ListarComponent},
+    {path:'inicio', component: HomeComponent},
 
     //{path:'servicios/regitrar', component: RegisterServicioComponent},
     //{path:'servicios', component: ListarServiciosComponent},

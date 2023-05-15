@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { user } from 'src/app/Models/users';
 import { UserService } from 'src/app/Services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -44,42 +45,55 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
   
-    console.log(this.loginForm);
-    this._userService.signup(this.loginForm).subscribe(
+    //console.log(this.loginForm);
+
+    this._userService.signup(this.loginForm.value).subscribe(
       response => {
+        //console.log(response);
+        if (response.status == 'error') {
 
-        //console.log(response);prueba al resivir datos suuarios
+          console.log('Datos Incorrectos del usuario!!');
 
-        this.identity = response;//se guarda en la variable identity
+        }
+        //TOKEN condicional
+        else {
+          this.status = 'success';
+          this.token = response;
 
-        //PERSISTIR DATOS DE USUARIO IDENTIFICADO
-        console.log(this.token);
-        console.log(this.identity);
-        localStorage.setItem('token', this.token);//guardar datos en el localstorage del navegador
-        localStorage.setItem('identity', JSON.stringify(this.identity));
-        //localStorage.setItem('identity', this.identity);
-        /*Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Hola',
-          text: 'Bienvenido!!',
-          showConfirmButton: false,
-          timer: 1500
-        })*/
+          //OBJETOS USUARIO IDENTOFICADO
+          this._userService.signup(this.loginForm.value, <any>true).subscribe(//traesmos los datos el usuarios identificado
+            response => {
 
-        //REDIRECCION A ALUNA RUTA en este caso usuarios
-        //this.toastr.success('Bienvenido!!');
-        //this._router.navigate(['inicio']);
-        console.log('logueado');
+              this.identity = response;//se guarda en la variable identity
 
-      },
-      error => {
-        this.status = 'error';
-        console.log(<any>error);
-      }
-    );
+              //PERSISTIR DATOS DE USUARIO IDENTIFICADO
+              console.log(this.token);
+              //console.log(this.identity);
+              localStorage.setItem('token', this.token);//guardar datos en el localstorage del navegador
+              localStorage.setItem('identity', JSON.stringify(this.identity));
 
 
+              //REDIRECCION A ALUNA RUTA en este caso usuarios
+              console.log('usuario logueado!!');
+              this._router.navigate(['inicio']);
+
+            },
+            error => {
+              this.status = 'error';
+              console.log(<any>error);
+
+            });
+          }
+
+      }); 
   }
+
+
+
+
+
+
+
+
 
 }
