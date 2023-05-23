@@ -51,17 +51,47 @@ export class UserService {
     }
 
     //LOGIN
-    signup(user: any, gettoken = null): Observable<any> {
+    signup(data: any, gettoken = null): Observable<any> {
         if (gettoken != null) {
-            user.gettoken = 'true';
+            data.gettoken = 'true';
         }
 
         let headers = new HttpHeaders()
         headers.set('Content-Type', 'application/x-www-form-urlencoded');
 
-        return this._http.post(this.url + 'login', user, { headers: headers });
+        return this._http.post(this.url + 'login', data, { headers: headers });
 
     }
+
+    //IDENTIFICAR AL USUARIO
+    getIdentity(){
+        let identity = JSON.parse(localStorage.getItem('identity') || '{}');
+
+        if(identity && identity != "undefined"){
+            this.identity = identity;
+        }else{
+            this.identity = null;
+        }
+
+        return this.identity;
+
+
+    }
+
+    //TRAER EL TOKEN
+  getToken(){
+
+    let token = localStorage.getItem('token');
+
+    if(token && token != "undefined"){
+        this.token = token;
+    }else{
+        this.token = null;
+    }
+
+    return this.token;
+
+}
 
 
 

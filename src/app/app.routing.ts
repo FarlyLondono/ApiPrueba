@@ -11,7 +11,7 @@ import { ListarUsuarioInactivosComponent } from '../app/views/user/listar-usuari
 
 const appRoutes: Routes = [
     {path:'', component: LoginComponent},
-    //{path:'logout/:sure', component: LoginComponent},
+    {path:'logout/:sure', component: LoginComponent},
     {path:'admin', component: ListarUsuarioComponent},
     {path:'inactivos', component: ListarUsuarioInactivosComponent},
     {path:'inicio', component: HomeComponent},

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.logout();
   }
 
   ingresoForm() {
@@ -67,7 +68,8 @@ export class LoginComponent implements OnInit {
               this.identity = response;//se guarda en la variable identity
 
               //PERSISTIR DATOS DE USUARIO IDENTIFICADO
-              console.log(this.token);
+              //console.log(this.token);
+              //console.log(this.identity);
               //console.log(this.identity);
               localStorage.setItem('token', this.token);//guardar datos en el localstorage del navegador
               localStorage.setItem('identity', JSON.stringify(this.identity));
@@ -90,6 +92,27 @@ export class LoginComponent implements OnInit {
 
 
 
+
+  logout(){
+    this._route.params.subscribe(params =>{
+      let logout = +params['sure'];
+
+
+      if(logout == 1){
+        localStorage.removeItem('token');
+        localStorage.removeItem('identity');
+
+        this.identity = null;
+        this.token = null;
+
+
+        //REDIRECCION A INICIAO
+        this._router.navigate(['']);
+
+      }
+
+    });
+  }
 
 
 

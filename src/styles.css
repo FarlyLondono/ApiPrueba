@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+.formContent {
+    
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(197, 195, 195, 0.856);
+    width: 30%;
+    max-width: 1100px;
+    left: calc(40% - 50px);
+    position: relative;
+    padding: 35px;
+    text-align: center;
+    
+}
+
+/* ANIMACIONES*/
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+  }
