@@ -1,0 +1,17 @@
+<app-home></app-home>
+<br>
+<a [routerLink]="['/admin']" style="display: inline; margin-right: 10px;" class="btn btn-success">Activos</a>
+<a [routerLink]="['/inactivos']" style="display: inline; margin-right: 10px;" class="btn btn-danger">Inactivos</a>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card mb-3" style="width: 18rem;" *ngFor="let usuarios of ListadoUsuarios">
+      <div class="card-body">
+        <h5 class="card-title">{{usuarios.Nombres}} {{usuarios.Apellidos}}</h5>
+        <p class="card-text">{{usuarios.email}}</p>
+        <a [routerLink]="['/inicio']" class="btn btn-primary">Ver detalle</a>
+      </div>
+    </div>
+  </div>
+</div>

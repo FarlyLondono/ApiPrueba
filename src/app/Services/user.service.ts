@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { user } from 'src/app/Models/users';
 import { environment } from 'src/environments/environment';
@@ -20,6 +20,34 @@ export class UserService {
 
     test() {
         return "hola farly desde un servicio!!";
+    }
+
+    //LISTAR USUARIO
+    getListarUsuario(token: any): Observable<any> {
+
+        
+        //let headers = new HttpHeaders().set('Authorization', token)
+        //.set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        
+        return this._http.get(this.url + 'user', { headers: headers });
+        
+    }
+
+    //LISTAR USUARIO
+    getListarUsuarioInactivos(token: any): Observable<any> {
+
+        
+        //let headers = new HttpHeaders().set('Authorization', token)
+        //.set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        
+        return this._http.get(this.url + 'userinactivos', { headers: headers });
+        
     }
 
     //LOGIN

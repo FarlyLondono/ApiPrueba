@@ -7,12 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/private/admin/Login/login/login.component';
 import { HomeComponent } from './views/home/home.component';
+import { ListarUsuarioComponent } from './views/user/listar-usuario/listar-usuario.component';
+import { ListarUsuarioInactivosComponent } from './views/user/listar-usuario-inactivos/listar-usuario-inactivos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ListarUsuarioComponent,
+    ListarUsuarioInactivosComponent
   ],
   imports: [
     BrowserModule,
